@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación XV - Aimeé </title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f7c6ff, #c6d8ff);
+      overflow-x: hidden;
+    }
+
+    /* Sobre */
+    .envelope {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #e8b6ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .envelope::before {
+      content: "💌";
+      font-size: 80px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Invitación */
+    .invitation {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: #5a3a7a;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 70px;
+      margin: 10px 0;
+      color: #a04acb;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.7);
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #a04acb;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #7a2ea3;
+    }
+
+    .glow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: sparkle 5s linear infinite;
+    }
+
+    @keyframes sparkle {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="envelope" onclick="openInvite()"></div>
+
+<div class="invitation" id="invitation">
+  <div class="card">
+    <h2>Mis XV</h2>
+    <h1>Cami</h1>
+
+    <p><strong>Sábado 18 de abril</strong></p>
+    <p>Misa 12:30 PM</p>
+
+    <p onclick="openMap()" style="cursor:pointer; text-decoration:underline;">
+      C 5 OTE. 810, La Magdalena Axocopan,<br>
+      Atlixco, Puebla
+    </p>
+
+    <a class="btn" href="#" onclick="confirmWhatsApp()">Confirmar asistencia</a>
+
+    <p>2223248799 - 2225088839</p>
+
+    <h3 style="font-family: 'Great Vibes'; font-size:30px;">¡Te esperamos!</h3>
+  </div>
+</div>
+
+<div class="glow"></div>
+
+<script>
+  function openInvite() {
+    document.querySelector('.envelope').style.display = 'none';
+    document.getElementById('invitation').style.display = 'block';
+  }
+
+  function openMap() {
+    window.open('https://www.google.com/maps/search/?api=1&query=C+5+OTE+810+Atlixco+Puebla');
+  }
+
+  function confirmWhatsApp() {
+    let phone = '522223248799';
+    let message = encodeURIComponent('Hola, confirmo mi asistencia a los XV de Cami');
+    window.open(`https://wa.me/${phone}?text=${message}`);
+  }
+</script>
+
+</body>
+</html>
