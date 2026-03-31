@@ -1,140 +1,324 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación XV - Aimeé </title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación XV - Aimeé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg-top: #f1c9ff;
+      --bg-mid: #d0bbff;
+      --bg-bot: #c2f2f5;
+      --violeta: #7e3aa7;
+      --violeta-deep: #5f2486;
+      --rosa: #f5b6f2;
+      --azul: #77d1f0;
+      --blanco: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f7c6ff, #c6d8ff);
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(160deg, var(--bg-top), var(--bg-mid) 40%, var(--bg-bot));
+      color: var(--violeta-deep);
       overflow-x: hidden;
     }
 
-    /* Sobre */
     .envelope {
       position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: #e8b6ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      inset: 0;
+      z-index: 40;
+      display: grid;
+      place-items: center;
       cursor: pointer;
-      z-index: 10;
+      background: radial-gradient(circle at center, #f8e5ff 0%, #cdaaf1 62%, #b18fe2 100%);
     }
 
     .envelope::before {
-      content: "💌";
-      font-size: 80px;
-      animation: bounce 1.5s infinite;
+      content: '💌';
+      font-size: 90px;
+      animation: float 1.6s ease-in-out infinite;
+      filter: drop-shadow(0 10px 18px rgba(97, 31, 118, 0.28));
     }
 
-    @keyframes bounce {
+    @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
     }
 
-    /* Invitación */
     .invitation {
       display: none;
-      text-align: center;
-      padding: 20px;
-      color: #5a3a7a;
-    }
-
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 70px;
-      margin: 10px 0;
-      color: #a04acb;
+      min-height: 100vh;
+      padding: 22px 14px;
     }
 
     .card {
-      background: rgba(255,255,255,0.7);
-      border-radius: 20px;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.65);
+      background:
+        radial-gradient(circle at 80% 85%, rgba(253, 192, 246, .45), transparent 40%),
+        radial-gradient(circle at 20% 15%, rgba(255, 224, 247, .55), transparent 42%),
+        linear-gradient(180deg, #e9c9ff 0%, #c7b7ff 44%, #c8f4f4 76%, #d8c9ff 100%);
+      box-shadow: 0 18px 45px rgba(79, 35, 111, 0.22);
+      isolation: isolate;
     }
 
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background: #a04acb;
-      color: white;
+    .sparkle-layer,
+    .sparkle-layer::before,
+    .sparkle-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,.95) 1.6px, transparent 2px);
+      background-size: 44px 44px;
+      opacity: .52;
+      z-index: 1;
+    }
+
+    .sparkle-layer::before { transform: translateY(10px); background-size: 72px 72px; opacity: .32; }
+    .sparkle-layer::after { transform: translateX(18px); background-size: 88px 88px; opacity: .24; }
+
+    .balloon {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.6);
+      box-shadow: inset -8px -12px 16px rgba(93, 41, 137, 0.15);
+      z-index: 2;
+    }
+
+    .left-1 { width: 150px; height: 150px; left: -64px; top: 18px; background: radial-gradient(circle at 30% 30%, #ffe3ff, #ca84dd 68%, #8c4cb8); }
+    .left-2 { width: 112px; height: 112px; left: -20px; top: 40px; background: radial-gradient(circle at 30% 30%, #ffeefc, #f0b6eb 65%, #be7fd2); }
+    .left-3 { width: 95px; height: 95px; left: -12px; top: 124px; background: radial-gradient(circle at 30% 30%, #f8dfff, #b772d6 70%, #7a3ea8); }
+
+    .right-1 { width: 140px; height: 140px; right: -62px; top: 90px; background: radial-gradient(circle at 30% 30%, #f3ffff, #8ce1fa 62%, #35a9d9); }
+    .right-2 { width: 110px; height: 110px; right: -18px; top: 68px; background: radial-gradient(circle at 30% 30%, #f2ffff, #defbff 66%, #a7d7f7); }
+    .right-3 { width: 102px; height: 102px; right: 22px; top: 118px; background: radial-gradient(circle at 30% 30%, #efffff, #71d4f8 65%, #3ba7d6); }
+
+    .header {
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      padding-top: 20px;
+    }
+
+    .xv-title {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(50px, 11vw, 82px);
+      letter-spacing: 2px;
+      color: var(--violeta);
+      text-shadow: 0 3px 0 #eecbff, 0 10px 18px rgba(93, 39, 131, .35);
+      text-transform: uppercase;
+    }
+
+    .name {
+      margin: 8px 0 0;
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(84px, 16vw, 136px);
+      line-height: .9;
+      color: #8b3fb0;
+      text-shadow: 0 3px 0 #f5d9ff, 0 10px 24px rgba(107, 49, 145, .36);
+    }
+
+    .content {
+      position: relative;
+      z-index: 3;
+      padding: 8px 20px 28px;
+    }
+
+    .cloud {
+      margin: 0 auto;
+      max-width: 540px;
+      border-radius: 48% 52% 44% 56% / 42% 46% 54% 58%;
+      background: radial-gradient(circle at 25% 30%, #f2ffff, #caf6f6 64%, #b2edf1 100%);
+      padding: 24px 22px 30px;
+      box-shadow: inset 0 8px 24px rgba(255,255,255,.55), 0 12px 28px rgba(72, 125, 150, .2);
+    }
+
+    .date-star {
+      float: left;
+      width: 146px;
+      min-height: 148px;
+      margin: 2px 18px 8px 0;
+      clip-path: polygon(50% 0%, 61% 34%, 100% 39%, 70% 60%, 80% 100%, 50% 78%, 20% 100%, 30% 60%, 0 39%, 39% 34%);
+      background: linear-gradient(180deg, #8cd0ff, #4eb4f1 70%, #3f8fd8 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 18px 10px;
+      text-transform: uppercase;
+      box-shadow: 0 9px 20px rgba(49, 114, 167, .38);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      line-height: 1.03;
+      letter-spacing: .8px;
+    }
+
+    .date-star .day { font-size: 17px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,.22); }
+    .date-star .num { font-size: 58px; font-weight: 700; text-shadow: 0 2px 3px rgba(0,0,0,.22); }
+    .date-star .month { font-size: 23px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,.2); }
+
+    .info { overflow: hidden; text-align: left; padding-top: 6px; }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: #7e329d;
+    }
+
+    .info-row .icon {
+      font-size: 27px;
+      line-height: 1;
+      margin-top: 1px;
+      width: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .main-time { font-size: 35px; font-weight: 700; color: #953cae; }
+    .detail { font-size: 15px; line-height: 1.3; font-weight: 500; }
+
+    .map-link,
+    .wa-link {
+      color: inherit;
       text-decoration: none;
-      transition: 0.3s;
+      border-bottom: 1px dashed rgba(120, 53, 151, .42);
+      cursor: pointer;
     }
 
-    .btn:hover {
-      background: #7a2ea3;
+    .wa-button {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #a049ca, #7e35ab);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(101, 43, 139, .35);
+    }
+
+    .wa-button:hover { filter: brightness(1.05); }
+
+    .footer {
+      margin-top: 14px;
+      text-align: center;
+      font-family: 'Alex Brush', cursive;
+      font-size: 66px;
+      color: #8c3faf;
+      text-shadow: 0 2px 0 #f5dcff;
     }
 
     .glow {
       position: fixed;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
-      background-image: radial-gradient(white 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: sparkle 5s linear infinite;
+      background:
+        radial-gradient(circle at 16% 25%, rgba(255,255,255,.18), transparent 24%),
+        radial-gradient(circle at 84% 44%, rgba(255,255,255,.16), transparent 30%),
+        radial-gradient(circle at 52% 82%, rgba(255,255,255,.14), transparent 24%);
     }
 
-    @keyframes sparkle {
-      from { transform: translateY(0); }
-      to { transform: translateY(-50px); }
+    @media (max-width: 560px) {
+      .cloud { border-radius: 30px; }
+      .date-star { float: none; margin: 0 auto 14px; }
+      .info { text-align: center; }
+      .info-row { justify-content: center; }
+      .footer { font-size: 56px; }
+      .main-time { font-size: 32px; }
+      .left-1 { left: -78px; }
+      .right-1 { right: -76px; }
     }
   </style>
 </head>
 <body>
+  <div class="envelope" onclick="openInvite()" aria-label="Abrir invitación"></div>
 
-<div class="envelope" onclick="openInvite()"></div>
+  <main class="invitation" id="invitation">
+    <section class="card">
+      <div class="sparkle-layer"></div>
 
-<div class="invitation" id="invitation">
-  <div class="card">
-    <h2>Mis XV</h2>
-    <h1>Cami</h1>
+      <div class="balloon left-1"></div>
+      <div class="balloon left-2"></div>
+      <div class="balloon left-3"></div>
+      <div class="balloon right-1"></div>
+      <div class="balloon right-2"></div>
+      <div class="balloon right-3"></div>
 
-    <p><strong>Sábado 18 de abril</strong></p>
-    <p>Misa 12:30 PM</p>
+      <header class="header">
+        <h2 class="xv-title">Mis XV’s</h2>
+        <h1 class="name">Aimeé</h1>
+      </header>
 
-    <p onclick="openMap()" style="cursor:pointer; text-decoration:underline;">
-      C 5 OTE. 810, La Magdalena Axocopan,<br>
-      Atlixco, Puebla
-    </p>
+      <section class="content">
+        <div class="cloud">
+          <div class="date-star">
+            <span class="day">Sábado</span>
+            <span class="num">18</span>
+            <span class="month">Abril</span>
+          </div>
 
-    <a class="btn" href="#" onclick="confirmWhatsApp()">Confirmar asistencia</a>
+          <div class="info">
+            <div class="info-row">
+              <span class="icon">⏰</span>
+              <div class="main-time">Misa 12:30 PM</div>
+            </div>
 
-    <p>2223248799 - 2225088839</p>
+            <div class="info-row">
+              <span class="icon" onclick="openMap()" title="Abrir ubicación">📍</span>
+              <div class="detail">
+                <a class="map-link" onclick="openMap()">C 5 OTE. 810, La Magdalena Axocopan, 74365 Atlixco, Pue.</a>
+              </div>
+            </div>
 
-    <h3 style="font-family: 'Great Vibes'; font-size:30px;">¡Te esperamos!</h3>
-  </div>
-</div>
+            <div class="info-row">
+              <span class="icon" onclick="confirmWhatsApp()" title="Confirmar por WhatsApp">📞</span>
+              <div class="detail">
+                <a class="wa-link" onclick="confirmWhatsApp()">Confirmar asistencia al 2223248799 · 2225088839</a><br />
+                <button class="wa-button" type="button" onclick="confirmWhatsApp()">💬 Confirmar por WhatsApp</button>
+              </div>
+            </div>
+          </div>
 
-<div class="glow"></div>
+          <div class="footer">¡Te esperamos!</div>
+        </div>
+      </section>
+    </section>
+  </main>
 
-<script>
-  function openInvite() {
-    document.querySelector('.envelope').style.display = 'none';
-    document.getElementById('invitation').style.display = 'block';
-  }
+  <div class="glow"></div>
 
-  function openMap() {
-    window.open('https://www.google.com/maps/search/?api=1&query=C+5+OTE+810+Atlixco+Puebla');
-  }
+  <script>
+    function openInvite() {
+      document.querySelector('.envelope').style.display = 'none';
+      document.getElementById('invitation').style.display = 'block';
+    }
 
-  function confirmWhatsApp() {
-    let phone = '522223248799';
-    let message = encodeURIComponent('Hola, confirmo mi asistencia a los XV de Cami');
-    window.open(`https://wa.me/${phone}?text=${message}`);
-  }
-</script>
+    function openMap() {
+      window.open('https://www.google.com/maps/search/?api=1&query=C+5+OTE+810+La+Magdalena+Axocopan+Atlixco+Puebla', '_blank');
+    }
 
+    function confirmWhatsApp() {
+      const phone = '522223248799';
+      const message = encodeURIComponent('Hola, confirmo mi asistencia a los XV de Aimeé');
+      window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+  </script>
 </body>
 </html>
