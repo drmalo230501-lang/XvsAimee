@@ -7,42 +7,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-top: #f1c9ff;
-      --bg-mid: #d0bbff;
-      --bg-bot: #c2f2f5;
-      --violeta: #7e3aa7;
-      --violeta-deep: #5f2486;
-      --rosa: #f5b6f2;
-      --azul: #77d1f0;
-      --blanco: #ffffff;
+      --bg-top: #f3cdff;
+      --bg-mid: #d4bfff;
+      --bg-bottom: #c6f2f4;
+      --violet: #7d39a5;
+      --violet-strong: #5f2588;
+      --violet-soft: #b87ada;
+      --aqua: #7fd4ef;
+      --white: #ffffff;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(160deg, var(--bg-top), var(--bg-mid) 40%, var(--bg-bot));
-      color: var(--violeta-deep);
+      min-height: 100vh;
+      color: var(--violet-strong);
+      background: linear-gradient(165deg, var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-bottom) 100%);
       overflow-x: hidden;
     }
 
     .envelope {
       position: fixed;
       inset: 0;
-      z-index: 40;
+      z-index: 30;
       display: grid;
       place-items: center;
+      background: radial-gradient(circle at center, #f8e4ff 0%, #d0adf2 65%, #b494df 100%);
       cursor: pointer;
-      background: radial-gradient(circle at center, #f8e5ff 0%, #cdaaf1 62%, #b18fe2 100%);
     }
 
     .envelope::before {
-      content: '💌';
-      font-size: 90px;
-      animation: float 1.6s ease-in-out infinite;
-      filter: drop-shadow(0 10px 18px rgba(97, 31, 118, 0.28));
+      content: "💌";
+      font-size: 88px;
+      animation: float 1.5s ease-in-out infinite;
+      filter: drop-shadow(0 10px 16px rgba(84, 30, 120, 0.25));
     }
 
     @keyframes float {
@@ -53,176 +53,170 @@
     .invitation {
       display: none;
       min-height: 100vh;
-      padding: 22px 14px;
+      padding: 14px 10px 20px;
     }
 
     .card {
-      max-width: 620px;
+      width: min(100%, 430px);
       margin: 0 auto;
       position: relative;
-      border-radius: 8px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.7);
       background:
-        radial-gradient(circle at 80% 85%, rgba(253, 192, 246, .45), transparent 40%),
-        radial-gradient(circle at 20% 15%, rgba(255, 224, 247, .55), transparent 42%),
-        linear-gradient(180deg, #e9c9ff 0%, #c7b7ff 44%, #c8f4f4 76%, #d8c9ff 100%);
-      box-shadow: 0 18px 45px rgba(79, 35, 111, 0.22);
+        radial-gradient(circle at 88% 84%, rgba(255, 188, 242, .48), transparent 38%),
+        radial-gradient(circle at 15% 12%, rgba(255, 226, 247, .55), transparent 42%),
+        linear-gradient(180deg, #ebcdff 0%, #cab8ff 45%, #cbf4f4 78%, #dbcfff 100%);
+      box-shadow: 0 16px 34px rgba(82, 38, 116, .22);
       isolation: isolate;
     }
 
-    .sparkle-layer,
-    .sparkle-layer::before,
-    .sparkle-layer::after {
+    .sparkles,
+    .sparkles::before,
+    .sparkles::after {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,.95) 1.6px, transparent 2px);
-      background-size: 44px 44px;
-      opacity: .52;
+      background-image: radial-gradient(rgba(255,255,255,.92) 1.4px, transparent 2px);
+      background-size: 40px 40px;
+      opacity: .45;
       z-index: 1;
     }
 
-    .sparkle-layer::before { transform: translateY(10px); background-size: 72px 72px; opacity: .32; }
-    .sparkle-layer::after { transform: translateX(18px); background-size: 88px 88px; opacity: .24; }
+    .sparkles::before { transform: translateY(12px); background-size: 66px 66px; opacity: .28; }
+    .sparkles::after { transform: translateX(18px); background-size: 80px 80px; opacity: .22; }
 
     .balloon {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.6);
-      box-shadow: inset -8px -12px 16px rgba(93, 41, 137, 0.15);
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow: inset -8px -10px 14px rgba(85, 42, 130, .15);
       z-index: 2;
     }
 
-    .left-1 { width: 150px; height: 150px; left: -64px; top: 18px; background: radial-gradient(circle at 30% 30%, #ffe3ff, #ca84dd 68%, #8c4cb8); }
-    .left-2 { width: 112px; height: 112px; left: -20px; top: 40px; background: radial-gradient(circle at 30% 30%, #ffeefc, #f0b6eb 65%, #be7fd2); }
-    .left-3 { width: 95px; height: 95px; left: -12px; top: 124px; background: radial-gradient(circle at 30% 30%, #f8dfff, #b772d6 70%, #7a3ea8); }
-
-    .right-1 { width: 140px; height: 140px; right: -62px; top: 90px; background: radial-gradient(circle at 30% 30%, #f3ffff, #8ce1fa 62%, #35a9d9); }
-    .right-2 { width: 110px; height: 110px; right: -18px; top: 68px; background: radial-gradient(circle at 30% 30%, #f2ffff, #defbff 66%, #a7d7f7); }
-    .right-3 { width: 102px; height: 102px; right: 22px; top: 118px; background: radial-gradient(circle at 30% 30%, #efffff, #71d4f8 65%, #3ba7d6); }
+    .left-1 { width: 128px; height: 128px; left: -58px; top: 26px; background: radial-gradient(circle at 30% 30%, #ffe3ff, #ce8ee0 66%, #8d4fba); }
+    .left-2 { width: 94px; height: 94px; left: -14px; top: 44px; background: radial-gradient(circle at 30% 30%, #ffedf9, #efb9ea 65%, #c084d5); }
+    .right-1 { width: 128px; height: 128px; right: -58px; top: 104px; background: radial-gradient(circle at 30% 30%, #f5ffff, #8edff8 62%, #39acd9); }
+    .right-2 { width: 94px; height: 94px; right: -14px; top: 88px; background: radial-gradient(circle at 30% 30%, #f2ffff, #d9fbff 64%, #a0d5f2); }
 
     .header {
-      text-align: center;
       position: relative;
       z-index: 3;
-      padding-top: 20px;
+      text-align: center;
+      padding: 18px 14px 0;
     }
 
     .xv-title {
       margin: 0;
       font-family: 'Cinzel', serif;
-      font-size: clamp(50px, 11vw, 82px);
-      letter-spacing: 2px;
-      color: var(--violeta);
-      text-shadow: 0 3px 0 #eecbff, 0 10px 18px rgba(93, 39, 131, .35);
+      color: var(--violet);
       text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-size: clamp(36px, 11vw, 62px);
+      text-shadow: 0 3px 0 #efccff, 0 8px 14px rgba(91, 41, 125, .3);
     }
 
     .name {
-      margin: 8px 0 0;
+      margin: 4px 0 0;
       font-family: 'Alex Brush', cursive;
-      font-size: clamp(84px, 16vw, 136px);
-      line-height: .9;
-      color: #8b3fb0;
-      text-shadow: 0 3px 0 #f5d9ff, 0 10px 24px rgba(107, 49, 145, .36);
+      font-size: clamp(68px, 18vw, 108px);
+      line-height: .92;
+      color: #8b40b0;
+      text-shadow: 0 3px 0 #f5d8ff, 0 10px 20px rgba(106, 49, 142, .34);
     }
 
     .content {
       position: relative;
       z-index: 3;
-      padding: 8px 20px 28px;
+      padding: 6px 14px 22px;
     }
 
     .cloud {
-      margin: 0 auto;
-      max-width: 540px;
-      border-radius: 48% 52% 44% 56% / 42% 46% 54% 58%;
-      background: radial-gradient(circle at 25% 30%, #f2ffff, #caf6f6 64%, #b2edf1 100%);
-      padding: 24px 22px 30px;
-      box-shadow: inset 0 8px 24px rgba(255,255,255,.55), 0 12px 28px rgba(72, 125, 150, .2);
+      border-radius: 30px;
+      background: radial-gradient(circle at 25% 30%, #f3ffff, #cdf6f7 64%, #b5edf1 100%);
+      padding: 18px 16px 22px;
+      box-shadow: inset 0 8px 20px rgba(255,255,255,.55), 0 10px 24px rgba(71, 118, 143, .2);
     }
 
-    .date-star {
-      float: left;
-      width: 146px;
-      min-height: 148px;
-      margin: 2px 18px 8px 0;
-      clip-path: polygon(50% 0%, 61% 34%, 100% 39%, 70% 60%, 80% 100%, 50% 78%, 20% 100%, 30% 60%, 0 39%, 39% 34%);
-      background: linear-gradient(180deg, #8cd0ff, #4eb4f1 70%, #3f8fd8 100%);
-      color: #ffffff;
+    .date-badge {
+      width: 100%;
+      margin: 0 0 14px;
+      border-radius: 18px;
+      padding: 10px 12px;
       text-align: center;
-      padding: 18px 10px;
+      color: var(--white);
+      background: linear-gradient(160deg, #8b5be6 0%, #a94dca 55%, #6f3fb2 100%);
+      box-shadow: 0 8px 16px rgba(92, 43, 132, .28);
       text-transform: uppercase;
-      box-shadow: 0 9px 20px rgba(49, 114, 167, .38);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      line-height: 1.03;
-      letter-spacing: .8px;
+      letter-spacing: .7px;
     }
 
-    .date-star .day { font-size: 17px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,.22); }
-    .date-star .num { font-size: 58px; font-weight: 700; text-shadow: 0 2px 3px rgba(0,0,0,.22); }
-    .date-star .month { font-size: 23px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,.2); }
-
-    .info { overflow: hidden; text-align: left; padding-top: 6px; }
+    .date-badge .line-top { font-size: 13px; font-weight: 700; }
+    .date-badge .line-main { font-size: 28px; font-weight: 700; margin: 2px 0; }
+    .date-badge .line-bottom { font-size: 15px; font-weight: 700; }
 
     .info-row {
       display: flex;
-      align-items: flex-start;
       gap: 10px;
-      margin-bottom: 12px;
-      color: #7e329d;
+      align-items: flex-start;
+      margin-bottom: 11px;
+      color: #7b319a;
     }
 
-    .info-row .icon {
-      font-size: 27px;
-      line-height: 1;
-      margin-top: 1px;
+    .icon {
       width: 30px;
       text-align: center;
+      font-size: 25px;
+      line-height: 1;
+      margin-top: 1px;
       cursor: pointer;
     }
 
-    .main-time { font-size: 35px; font-weight: 700; color: #953cae; }
-    .detail { font-size: 15px; line-height: 1.3; font-weight: 500; }
+    .main-time {
+      font-size: 29px;
+      line-height: 1.06;
+      font-weight: 700;
+      color: #973db0;
+    }
+
+    .detail {
+      font-size: 14px;
+      line-height: 1.32;
+      font-weight: 500;
+    }
 
     .map-link,
     .wa-link {
       color: inherit;
       text-decoration: none;
-      border-bottom: 1px dashed rgba(120, 53, 151, .42);
+      border-bottom: 1px dashed rgba(121, 50, 153, .45);
       cursor: pointer;
     }
 
     .wa-button {
-      margin-top: 10px;
+      margin-top: 9px;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 15px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #a049ca, #7e35ab);
-      color: #fff;
+      font-size: 13px;
       font-weight: 700;
-      font-size: 14px;
+      color: #fff;
+      background: linear-gradient(180deg, #a047ca, #7d35aa);
+      box-shadow: 0 8px 16px rgba(95, 42, 132, .3);
       cursor: pointer;
-      box-shadow: 0 8px 18px rgba(101, 43, 139, .35);
     }
 
-    .wa-button:hover { filter: brightness(1.05); }
-
     .footer {
-      margin-top: 14px;
+      margin-top: 12px;
       text-align: center;
       font-family: 'Alex Brush', cursive;
-      font-size: 66px;
-      color: #8c3faf;
-      text-shadow: 0 2px 0 #f5dcff;
+      font-size: 54px;
+      color: #8b3fb0;
+      text-shadow: 0 2px 0 #f3d8ff;
     }
 
     .glow {
@@ -230,20 +224,18 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 16% 25%, rgba(255,255,255,.18), transparent 24%),
-        radial-gradient(circle at 84% 44%, rgba(255,255,255,.16), transparent 30%),
-        radial-gradient(circle at 52% 82%, rgba(255,255,255,.14), transparent 24%);
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.16), transparent 24%),
+        radial-gradient(circle at 83% 41%, rgba(255,255,255,.15), transparent 30%),
+        radial-gradient(circle at 50% 82%, rgba(255,255,255,.12), transparent 25%);
     }
 
-    @media (max-width: 560px) {
-      .cloud { border-radius: 30px; }
-      .date-star { float: none; margin: 0 auto 14px; }
-      .info { text-align: center; }
-      .info-row { justify-content: center; }
-      .footer { font-size: 56px; }
-      .main-time { font-size: 32px; }
-      .left-1 { left: -78px; }
-      .right-1 { right: -76px; }
+    @media (min-width: 560px) {
+      .invitation { padding-top: 24px; }
+      .card { width: min(100%, 620px); }
+      .cloud { border-radius: 44% 56% 45% 55% / 44% 45% 55% 56%; padding: 24px 20px 28px; }
+      .date-badge { max-width: 340px; margin: 0 auto 14px; }
+      .info-row { max-width: 430px; margin-left: auto; margin-right: auto; }
+      .footer { font-size: 64px; }
     }
   </style>
 </head>
@@ -252,14 +244,12 @@
 
   <main class="invitation" id="invitation">
     <section class="card">
-      <div class="sparkle-layer"></div>
+      <div class="sparkles"></div>
 
       <div class="balloon left-1"></div>
       <div class="balloon left-2"></div>
-      <div class="balloon left-3"></div>
       <div class="balloon right-1"></div>
       <div class="balloon right-2"></div>
-      <div class="balloon right-3"></div>
 
       <header class="header">
         <h2 class="xv-title">Mis XV’s</h2>
@@ -268,31 +258,29 @@
 
       <section class="content">
         <div class="cloud">
-          <div class="date-star">
-            <span class="day">Sábado</span>
-            <span class="num">18</span>
-            <span class="month">Abril</span>
+          <div class="date-badge">
+            <div class="line-top">Sábado</div>
+            <div class="line-main">18 de Abril</div>
+            <div class="line-bottom">2026</div>
           </div>
 
-          <div class="info">
-            <div class="info-row">
-              <span class="icon">⏰</span>
-              <div class="main-time">Misa 12:30 PM</div>
-            </div>
+          <div class="info-row">
+            <span class="icon">⏰</span>
+            <div class="main-time">Misa 12:30 PM</div>
+          </div>
 
-            <div class="info-row">
-              <span class="icon" onclick="openMap()" title="Abrir ubicación">📍</span>
-              <div class="detail">
-                <a class="map-link" onclick="openMap()">C 5 OTE. 810, La Magdalena Axocopan, 74365 Atlixco, Pue.</a>
-              </div>
+          <div class="info-row">
+            <span class="icon" onclick="openMap()" title="Abrir ubicación">📍</span>
+            <div class="detail">
+              <a class="map-link" onclick="openMap()">C 5 OTE. 810, La Magdalena Axocopan, 74365 Atlixco, Pue.</a>
             </div>
+          </div>
 
-            <div class="info-row">
-              <span class="icon" onclick="confirmWhatsApp()" title="Confirmar por WhatsApp">📞</span>
-              <div class="detail">
-                <a class="wa-link" onclick="confirmWhatsApp()">Confirmar asistencia al 2223248799 · 2225088839</a><br />
-                <button class="wa-button" type="button" onclick="confirmWhatsApp()">💬 Confirmar por WhatsApp</button>
-              </div>
+          <div class="info-row">
+            <span class="icon" onclick="confirmWhatsApp()" title="Confirmar por WhatsApp">📞</span>
+            <div class="detail">
+              <a class="wa-link" onclick="confirmWhatsApp()">Confirmar asistencia al 2223248799 · 2225088839</a><br />
+              <button class="wa-button" type="button" onclick="confirmWhatsApp()">💬 Confirmar por WhatsApp</button>
             </div>
           </div>
 
